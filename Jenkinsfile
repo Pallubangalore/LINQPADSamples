@@ -5,8 +5,11 @@ pipeline {
         stage ('Compile Stage') {
 
             steps {
-                maven : 'maven_3_5_0' {
-                    sh 'mvn clean compile'
+                tools {
+         maven '3.5.0' 
+		 sh 'mvn clean compile'
+    }
+                    
                 }
             }
         }
@@ -14,18 +17,20 @@ pipeline {
         stage ('Testing Stage') {
 
             steps {
-                maven : 'maven_3_5_0' {
-                    sh 'mvn test'
-                }
+                tools {
+         maven '3.5.0' 
+		 sh 'mvn clean compile'
+    }
             }
         }
 
 
         stage ('Deployment Stage') {
             steps {
-                maven : 'maven_3_5_0' {
-                    sh 'mvn deploy'
-                }
+                tools {
+         maven '3.5.0' 
+		 sh 'mvn clean compile'
+    }
             }
         }
     }
